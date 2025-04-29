@@ -40,13 +40,13 @@
 
 ## 私用した技術・ライブラリ
 
-- フレームワーク: React (Create React App)  
+- フレームワーク: React  
 - UIライブラリ: Material-UI (MUI)  
-- 状態管理: React Hooks (useState, useEffect)  
-- スタイリング: Material-UIのsxプロップス（CSS-in-JS）  
-- フォーム管理: Reactのフォーム制御（useStateベース）  
-- データ処理: ローカル状態とJavaScriptの配列処理（filterなど）  
-- 開発ツール: Create React App標準（Webpack, Babel, ESLint）  
+- 状態管理: useState & useEffect  
+- スタイリング: CSS-in-JS  
+- フォーム管理: React Hook Form  
+- データ処理: useEffect  
+- 開発ツール: React DevTools、ESLint & Prettier  
 
 
 ## 実装した機能の説明
