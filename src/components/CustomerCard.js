@@ -1,7 +1,9 @@
 import React from 'react';
 import { useDrag } from 'react-dnd';
+import { useNavigate } from 'react-router-dom';
 
 const CustomerCard = ({ customer, handleStatusChange }) => {
+  const navigate = useNavigate();
   const [{ isDragging }, drag] = useDrag(() => ({
     type: 'customer',
     item: { id: customer.id, orderStatus: customer.orderStatus },
@@ -10,9 +12,15 @@ const CustomerCard = ({ customer, handleStatusChange }) => {
     }),
   }));
 
+
+  const handleCardClick = () => {
+    navigate(`/customers/${customer.id}`);
+  };
+
   return (
     <div
       ref={drag}
+      onClick={handleCardClick}
       style={{
         border: '1px solid #ccc',
         padding: '10px',
@@ -32,3 +40,4 @@ const CustomerCard = ({ customer, handleStatusChange }) => {
 };
 
 export default CustomerCard;
+

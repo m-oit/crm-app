@@ -1,70 +1,118 @@
-# Getting Started with Create React App
+# 顧客管理システム（CRMアプリ）
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+このアプリは顧客管理システムです。顧客の氏名やメールアドレスの情報、ステータスなどを管理します。
 
-## Available Scripts
 
-In the project directory, you can run:
+## 目次
 
-### `npm start`
+- [機能概要](#機能概要)
+- [セットアップ手順](#セットアップ手順)
+- [使用した技術・ライブラリ](#使用した技術ライブラリ)
+- [実装した機能の説明](#実装した機能の説明)
+- [動作確認方法](#動作確認方法)
+- [フォルダ構成](#フォルダ構成)
+- [今後の改善点](#今後の改善点)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 機能概要
 
-### `npm test`
+このアプリケーションは以下の主要機能を提供します
+・顧客の一覧表示・検索
+・顧客の新規登録・削除
+・顧客詳細画面の表示
+・ステータス別に顧客をドラッグ＆ドロップで分類（ダッシュボード機能）
+・レスポンシブ対応（スマートフォン表示に最適化）
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## セットアップ手順
+1.Node.js のインストール
+2.Node.js公式サイト から、下記のバージョンをインストール
+  使用バージョン: node-v22.15.0-x64.msi
 
-### `npm run build`
+3.プロジェクト用のフォルダを作成
+  エクスプローラーなどで react-task フォルダを作成し、その中にプロジェクトを作成
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4.npm install
+開発用サーバーの起動
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+5.npm start
+ブラウザで http://localhost:3000 を開くとアプリが表示されます。
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 私用した技術・ライブラリ
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+・フレームワーク: React (Create React App)
+・UIライブラリ: Material-UI (MUI)
+・状態管理: React Hooks (useState, useEffect)
+・スタイリング: Material-UIのsxプロップス（CSS-in-JS）
+・フォーム管理: Reactのフォーム制御（useStateベース）
+・データ処理: ローカル状態とJavaScriptの配列処理（filterなど）
+・開発ツール: Create React App標準（Webpack, Babel, ESLint）
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 実装した機能の説明
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+1.ログイン機能
+ユーザーによるログイン
+ゲストログイン対応
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2.顧客一覧画面
+顧客情報のテーブル表示（名前、メール、電話番号、登録日など）
+検索機能（名前・メール・電話番号でフィルター）
+顧客の追加機能
+顧客の削除機能（確認ダイアログあり）
+顧客の詳細ページへの遷移
+ダッシュボード上でのステータス別表示＆ドラッグアンドドロップによるステータス変更
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3.デザイン
+Material-UI（MUI）による一貫性のあるUI設計
+モバイル対応（レスポンシブデザイン）
+ダッシュボード・テーブル・フォームなど、用途に応じたコンポーネント設計
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 動作確認方法
 
-### Analyzing the Bundle Size
+**ログイン画面**
+アプリケーションを起動すると、ログイン画面が表示されます。
+以下のテスト用アカウントでログインしてください：
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- ユーザー名: `user`
+- パスワード: `password123`
 
-### Making a Progressive Web App
+※上記以外のアカウント情報を入力すると、エラーメッセージが表示されログインできません。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+「ゲストログイン」ボタンからもログインできます。
+入力欄を空のままログインしようとすると、エラーメッセージが表示されます。
 
-### Advanced Configuration
+**ダッシュボード**
+ログイン後、自動的にダッシュボードに遷移します。
+ダッシュボードでは、顧客が「注文状況（ステータス）」ごとに分類されて表示されます。
+顧客カードはステータスごとのカラムに表示されます。
+ドラッグ＆ドロップで別のステータスに移動できます。
+ステータス変更は即座に反映されます。
+顧客名をクリックすると詳細画面に遷移します。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+**顧客一覧画面**
+画面左のナビゲーションメニューから「顧客一覧」を選択すると遷移します。
+登録されている顧客の情報（氏名、メールアドレス、電話番号、登録日）が表示されます。
+各行に「削除」ボタンがあり、クリックすると確認ダイアログが表示され、顧客を削除できます。
+顧客名をクリックすると、該当顧客の詳細画面に遷移します。
+編集ボタンを押すと編集画面に遷移し、情報を編集できます。
 
-### Deployment
+**モバイル対応**
+スマートフォンや小さな画面では、サイドバーがドロワー表示になります。
+上部のメニューアイコンをタップしてメニューを開閉できます。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+**フォルダ構成**
+src/
+├── components/                再利用可能なUIコンポーネント群
+│   ├── AddCustomer.js         顧客追加フォーム
+│   ├── CustomerCard.js        顧客情報を表示するカード
+│   ├── CustomerDetail.js      顧客詳細ページ
+│   ├── CustomerList.js        顧客一覧ページ
+│   ├── Dashboard.js           ステータス別顧客表示ダッシュボード
+│   ├── Login.js               ログイン画面
+│   └── Sidebar.js             サイドナビゲーションメニュー
+├── App.js                     ルーティングとレイアウトの定義
+├── index.js                   アプリのエントリーポイント
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // useNavigateのインポート
+import { useNavigate } from 'react-router-dom';
+import { TextField, Button, Typography, Box, Container, Alert } from '@mui/material';
 
 const Login = ({ onLogin, onGuestLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate(); // useNavigateのフック
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -16,51 +17,86 @@ const Login = ({ onLogin, onGuestLogin }) => {
       return;
     }
 
-    // サンプルの認証処理
+
     if (username !== 'user' || password !== 'password123') {
       setError('ユーザー名またはパスワードが間違っています');
       return;
     }
 
-    onLogin(); // ログイン成功
-    navigate('/dashboard'); // ダッシュボードに遷移
+    onLogin();
+    navigate('/dashboard');
   };
 
   const handleGuestLogin = () => {
-    onGuestLogin(); // ゲストログイン成功
-    navigate('/dashboard'); // ダッシュボードに遷移
+    onGuestLogin();
+    navigate('/dashboard');
   };
 
   return (
-    <div>
-      <h2>ログイン</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>ユーザー名</label>
-          <input
-            type="text"
+    <Container maxWidth="xs" style={{ paddingTop: '50px' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          padding: 3,
+          borderRadius: 2,
+          boxShadow: 3,
+          backgroundColor: '#fff',
+        }}
+      >
+        <Typography variant="h4" gutterBottom>
+          ログイン
+        </Typography>
+        <form onSubmit={handleLogin} style={{ width: '100%' }}>
+          <TextField
+            label="ユーザー名"
+            variant="outlined"
+            fullWidth
+            margin="normal"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
-        </div>
-        <div>
-          <label>パスワード</label>
-          <input
+          <TextField
+            label="パスワード"
+            variant="outlined"
             type="password"
+            fullWidth
+            margin="normal"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-        </div>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <button type="submit">ログイン</button>
-      </form>
-      <button onClick={handleGuestLogin}>ゲストログイン</button> {/* ゲストログインボタン */}
-    </div>
+          {error && (
+            <Alert severity="error" style={{ marginBottom: '20px' }}>
+              {error}
+            </Alert>
+          )}
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            fullWidth
+            style={{ marginBottom: '10px' }}
+          >
+            ログイン
+          </Button>
+        </form>
+        <Button
+          variant="outlined"
+          color="secondary"
+          fullWidth
+          onClick={handleGuestLogin}
+        >
+          ゲストログイン
+        </Button>
+      </Box>
+    </Container>
   );
 };
 
 export default Login;
+
 
 
