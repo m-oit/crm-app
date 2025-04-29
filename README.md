@@ -42,7 +42,7 @@
 
 - フレームワーク: React  
 - UIライブラリ: Material-UI (MUI)  
-- 状態管理: useState & useEffect  
+- 状態管理: React Hooks (`useState`, `useEffect`など)  
 - スタイリング: CSS-in-JS  
 - フォーム管理: React Hook Form  
 - データ処理: useEffect  
