@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // useNavigateのインポート
 
-const Login = () => {
+const Login = ({ onLogin, onGuestLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate(); // useNavigateのフック
 
   const handleLogin = (e) => {
     e.preventDefault();
-
-    // エラーメッセージをリセット
     setError('');
 
-    // ユーザー名またはパスワードが空の場合、エラーを表示
     if (!username || !password) {
       setError('ユーザー名とパスワードは必須です');
       return;
@@ -23,8 +22,13 @@ const Login = () => {
       return;
     }
 
-    console.log('ログイン成功');
-    // ログイン後の処理をここに追加できます
+    onLogin(); // ログイン成功
+    navigate('/dashboard'); // ダッシュボードに遷移
+  };
+
+  const handleGuestLogin = () => {
+    onGuestLogin(); // ゲストログイン成功
+    navigate('/dashboard'); // ダッシュボードに遷移
   };
 
   return (
@@ -49,11 +53,14 @@ const Login = () => {
             required
           />
         </div>
-        {error && <p style={{ color: 'red' }}>{error}</p>} {/* エラーメッセージを表示 */}
+        {error && <p style={{ color: 'red' }}>{error}</p>}
         <button type="submit">ログイン</button>
       </form>
+      <button onClick={handleGuestLogin}>ゲストログイン</button> {/* ゲストログインボタン */}
     </div>
   );
 };
 
 export default Login;
+
+

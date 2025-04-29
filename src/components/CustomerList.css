@@ -1,0 +1,35 @@
+@media screen and (max-width: 768px) {
+  /* スマートフォン向けのスタイル */
+  table, th, td {
+    display: block;
+    width: 100%;
+  }
+  th, td {
+    padding: 10px;
+    text-align: left;
+  }
+  th button {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+
+  /* 入力フォームの幅を調整 */
+  input[type="text"] {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* さらに小さな画面の場合（モバイル向け） */
+  table, th, td {
+    display: block;
+    width: 100%;
+  }
+  th, td {
+    font-size: 14px;  /* フォントサイズを小さく */
+  }
+  input[type="text"] {
+    font-size: 14px;  /* 入力フォームのフォントサイズ */
+  }
+}
